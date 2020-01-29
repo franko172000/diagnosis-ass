@@ -1,8 +1,8 @@
-const redis = require('redis');
+const config = require('../config/config');
 const Category = require('../models/Category');
 const Diagnosis = require('../models/Diagnosis');
 const serverResponse = require('../helpers/ServerResponses');
-const cache = redis.createClient(6379);
+const cache = config.redis;
 /**
  * Diagnosis controller
  */

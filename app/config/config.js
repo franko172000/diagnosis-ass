@@ -1,7 +1,13 @@
 require('dotenv').config();
+const redis = require('redis');
 
 const environment = process.env;
+const client = redis.createClient({
+    host:environment.REDIS_SERVER,
+    port: 6379
+});
 module.exports = {
+    redis: client,
     appSecret: environment.API_SECRET_KEY,
     dbConnection: {
         client: environment.DATABASE_CLIENT,

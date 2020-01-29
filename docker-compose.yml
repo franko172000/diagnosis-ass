@@ -3,7 +3,7 @@ services:
   postgresdb:
     image: postgres
     environment:
-      POSTGRES_PASSWORD : postgres
+      POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres_user
       POSTGRES_DB: diagnosis_db
     volumes:
@@ -19,6 +19,13 @@ services:
     container_name: diagnosis-app
     ports:
       - 4000:3300
+    environment:
+      DB_HOST:postgresdb
+      DB_SCHEMA:diagnosis_db
+      DB_USER:postgres
+      DB_PASS:postgres_user
+      DB_PORT:5432
     restart: unless-stopped
+    command: ["./wait-for-it.sh", "postgresdb:5432", "--", "npm", "start"]
     depends_on:
       - postgresdb

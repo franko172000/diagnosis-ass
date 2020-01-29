@@ -6,22 +6,38 @@ Open up a terminal o your machine, navigate to a directory of your choice and ru
 ```bash
 git clone https://github.com/franko172000/diagnosis-ass.git
 ```
-# Running the application via docker
-make sure docker is already installed on your machine. Get it here (https://docs.docker.com/docker-for-windows/install/)
+# Setting up DB
+1. Open up the .env file, replace the values shown below with your database configuration.
+```bash
+DB_HOST=  database host here
+DB_SCHEMA=  database name here
+DB_USER= database user here
+DB_PASS= database user password here
+DB_PORT= database port number
+DATABASE_CLIENT= database client. Example: mysql, pg = postgresql
+
+```
+
+# Running on Node environment
+make sure NodeJS is already installed on your machine. Get it here (https://nodejs.org/en/download/)
 ```bash
 $ npm install
-
 $ npm start
 ```
-# Running on Docker
+# Running Test
+To run the test scripts, run the command below.
 ```bash
-$ docker build -t  droneapp .
-$ docker container run --name my-droneapp -p 3000:3000 droneapp
+$ npm run test
+```
+# Running on Docker
+1. make sure docker is already installed on your machine. Get it here (https://docs.docker.com/docker-for-windows/install/)
+2. Open up a terminal on your machine and run the command
+```bash
+$ docker-compose up
 ```
 
-# Login Detail
-1. Username : admin
-2. Password : test
+# Endpoints
+
 
 #Author
 Anyaso Franklin

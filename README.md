@@ -6,6 +6,10 @@ Open up a terminal o your machine, navigate to a directory of your choice and ru
 ```bash
 git clone https://github.com/franko172000/diagnosis-ass.git
 ```
+
+# Dependency
+This application need Redis to function properly. Make sure redis server is installed and running on your machine 
+
 # Setting up DB
 1. Open up the .env file, replace the values shown below with your database configuration.
 ```bash
@@ -37,10 +41,76 @@ $ docker-compose up
 ```
 
 # Endpoints
+```bash
+Get Diagnosis Records
+Method : GET
+/api/v1/diagnosis/get?limit=10&page=1
 
+Get one Diagnosis Record
+Method : GET
+/api/v1/diagnosis/get-one?code=test
+
+Edit Diagnosis Record
+/api/v1/diagnosis/edit
+Method : POST
+body 
+{
+	"category" : "required",
+	"diagnosis_code" : "required",
+	"full_code": "required",
+	"full_description" : "required",
+	"partial_description" : "required"
+}
+            
+Add Diagnosis Record
+/api/v1/diagnosis/create
+Method : POST
+body 
+{
+	"category" : "required",
+	"diagnosis_code" : "required",
+	"full_description" : "required",
+	"partial_description" : "required"
+}
+
+Delete Diagnosis Record
+Method : DELETE
+/api/v1/diagnosis/delete?code=test
+
+Get Categories
+Method : GET
+/api/v1/category/get?limit=10&page=1
+
+Get one category
+Method : GET
+/api/v1/category/get-one?code=test
+
+Edit category
+/api/v1/category/edit
+Method : POST
+body 
+{
+	"name" : "required",
+	"code" : "required",
+}
+            
+Add category
+/api/v1/category/create
+Method : POST
+body 
+{
+	"name" : "required",
+	"code" : "required",
+}
+
+Delete category
+Method : DELETE
+/api/v1/category/delete?code=test
+
+```
 
 #Author
-Anyaso Franklin
+Anyaso Franklin <br />
 franko172000@gmail.com
 
 

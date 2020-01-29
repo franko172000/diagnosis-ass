@@ -1,5 +1,15 @@
 version: '3'
 services:
+  postgresdb:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD : postgres
+      POSTGRES_USER: postgres_user
+      POSTGRES_DB: diagnosis_db
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   redis:
     image: redis:latest
     container_name: redisserver
@@ -7,6 +17,8 @@ services:
   mainApp:
     image: franko172000/diagnosis-ass:latest
     container_name: diagnosis-app
+    ports:
+      - 4000:3300
     restart: unless-stopped
     depends_on:
-      - redis
+      - postgresdb

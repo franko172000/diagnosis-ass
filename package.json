@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "knex migrate:latest && knex seed:run && nodemon ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "knex migrate:latest && knex seed:run && mocha"
   },
   "dependencies": {
